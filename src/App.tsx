@@ -1,12 +1,12 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import { Scene } from "./Scene";
+import { FinalScene } from "./FinalScene";
 
 function App() {
   return (
     <>
       <Canvas shadows="soft" style={{ width: "100vw", height: "100vh" }}>
-        <Scene />
+        <FinalScene />
       </Canvas>
     </>
   );

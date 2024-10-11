@@ -29,6 +29,7 @@ const FinalScene = () => {
     const inst: InstancedRigidBodyProps[] = [];
 
     for (let i = 0; i < cubesCount; i++) {
+      const scaleFactor = Math.random();
       inst.push({
         key: "cube_instance_" + i,
         position: vec3({
@@ -42,9 +43,9 @@ const FinalScene = () => {
           z: 0,
         }),
         scale: vec3({
-          x: 0.5,
-          y: 0.5,
-          z: 0.5,
+          x: scaleFactor,
+          y: scaleFactor,
+          z: scaleFactor,
         }),
       });
     }
