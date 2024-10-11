@@ -10,8 +10,9 @@ import {
   vec3,
 } from "@react-three/rapier";
 import { useRef, useState, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 const FinalScene = () => {
   const [speed, setSpeed] = useState<number>(3);
@@ -21,7 +22,9 @@ const FinalScene = () => {
     if (e.key === "ArrowDown") setSpeed(speed - 1);
   });
 
-  const [hitSound] = useState(() => new Audio("/hit.mp3"));
+  const car = useLoader(GLTFLoader, "./model/scene.gltf");
+
+  const [hitSound] = useState(() => new Audio("./hit.mp3"));
 
   const cubesCount = 100;
 
@@ -101,6 +104,10 @@ const FinalScene = () => {
             <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color="red" />
           </mesh>
+        </RigidBody>
+
+        <RigidBody type="fixed">
+          <primitive object={car.scene} />
         </RigidBody>
 
         <RigidBody type="fixed" restitution={0.5}>
